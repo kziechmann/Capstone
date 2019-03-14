@@ -1,16 +1,58 @@
 body{
-  background-color: #313131
+  background-color: rgb(19, 21, 19)
 }
 h3{
-  font-family: "Roboto - Black";
+  font-family: "Roboto-Bold";
   font-weight: 900;
 }
+
 
 p{
   color: #ffffff;
   font-family: Roboto;
   font-size: 20px;
   font-weight: 400;
-  font-family: "Roboto - Bold";
-  font-weight: 700;
+  font-family: "Roboto";
+}
+
+.main-icon{
+  margin-top: 1em;
+  font-size: 1em;
+  margin-right: 5px;
+}
+
+.login-title{
+  
+}
+
+.background_photo{
+    width: 100vw;
+    background: url('./images/360photos/Login_Background.jpg');
+    opacity: .25;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;   
+}
+
+.login-form{
+  display: inline-block;
+  position: absolute;
+  top: 12%;
+  left: 5%;
+  height: 20vh;
+}
+
+@media only screen and (min-width: 600px){
+  .login-form{
+    display: inline-block;
+    position: absolute;
+    top: 12%;
+    left: 36%;
+    bottom: 50%;
+    right: 33%;
+    height: 80vh;
+  }
 }

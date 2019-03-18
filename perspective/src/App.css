@@ -6,6 +6,18 @@ h3{
   font-weight: 900;
 }
 
+h4{
+  margin-top: -12px;
+  margin-bottom: -12px;
+  font-family: "Roboto-Bold";
+  color: whitesmoke
+}
+
+h5{
+  margin-bottom: 10px;
+  font-family: "Roboto-Black";
+  color: whitesmoke
+}
 
 p{
   color: #ffffff;
@@ -15,15 +27,61 @@ p{
   font-family: "Roboto";
 }
 
+.column-head{
+  margin-top: -1em;
+  margin-bottom: -2em;
+}
+
 .main-icon{
   margin-top: 1em;
   font-size: 1em;
   margin-right: 5px;
 }
 
-.login-title{
-  
+.storyDash{
+  top: 5%;
+  bottom: 5%;
+  margin-left: 50px; 
+  color:black; 
+  position: fixed;
+  height:90vh;
+  width:65vw; 
 }
+
+.story{
+  padding: -10px;
+}
+
+.nav{
+  top: 5%;
+  left: 5%;
+  color:black;
+  position: fixed;
+  height: 90vh;
+  width:300px;
+
+}
+
+.mapBox{
+  background-color: slategrey;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 5px;
+  padding-left: 5px;
+  width:310px;
+  position: fixed;
+  top: 62%;
+}
+
+.thumb{
+  box-shadow: 10px 10px 25px 5px rgba(0,0,0,0.74);
+
+}
+
+.ava-box{
+  margin-bottom: -12px;
+}
+
 
 .background_photo{
     width: 100vw;

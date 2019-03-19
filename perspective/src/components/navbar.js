@@ -31,13 +31,13 @@ class Nav extends Component {
         </span>
      </li>
       <li className="collection-item blue-grey">
-        <a className="waves-effect waves-light green btn" href="/#" style={{  paddingRight:'50px'}}><i className="material-icons left">map</i>All Stories</a>
+        <a className="waves-effect waves-light green btn" href="/#" style={{  paddingRight:'50px'}} onClick={e=>this.props.switchToStories(e)}><i className="material-icons left">map</i>All Stories</a>
      </li>
       <li className="collection-item blue-grey">
        <a className="waves-effect waves-light green btn" href="/#"><i className="material-icons left">backup</i>Upload Views</a>
       </li>
       <li className="collection-item blue-grey">
-        <a className="waves-effect waves-light green btn" href="/#"><i className="material-icons left">explore</i>Explore Story</a>
+        <a className="waves-effect waves-light green btn" href="/#" onClick={e=>this.props.switchToView(e)}><i className="material-icons left">explore</i>Explore Story</a>
       </li>
       <li className="collection-item blue-grey">
         <a className="waves-effect waves-light green btn" href="/#" style={{  paddingRight:'55px'}}><i className="material-icons left">create</i>    Edit Story </a>

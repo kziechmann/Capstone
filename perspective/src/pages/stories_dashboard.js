@@ -8,15 +8,15 @@ class Stories extends Component {
         {   title: "SKIING RED MOUNTAIN",
             description: "From the top of Denali looking acrosss the Alaska range in all of its glory.",
             location:  "63.0865043,-150.6297594",
-            url:"https://perspectiveapp360photos.s3.amazonaws.com/PANO_20180128_142447.jpg?AWSAccessKeyId=AKIAI2MLWHVQZ25KOA4A&Expires=1552688837&Signature=1qhQizi1whxm6So8d55bBldY8%2Bw%3D"},
+            url:"https://s3-us-west-2.amazonaws.com/perspective360photos/Red_Mountain_360.jpg"},
         {   title: "FIRST FLATIRON SUMMIT",
             description: "From the top of Denali looking acrosss the Alaska range in all of its glory.",
             location:  "63.0865043,-150.6297594",
-            url: "https://perspectiveapp360photos.s3.amazonaws.com/PANO_20180308_170130.jpg?AWSAccessKeyId=AKIAI2MLWHVQZ25KOA4A&Expires=1552688837&Signature=G02cd6fQ3UpnfIh6kDWjduEXJSY%3D"},
+            url: "https://s3-us-west-2.amazonaws.com/perspective360photos/Flatirons_360.jpg"},
         {   title: "BLACK SAND BEACH",
             description: "From the top of Denali looking acrosss the Alaska range in all of its glory.",
             location:  "63.0865043,-150.6297594",
-            url:"https://perspectiveapp360photos.s3.amazonaws.com/PANO_20181019_014544.jpg?AWSAccessKeyId=AKIAI2MLWHVQZ25KOA4A&Expires=1552688837&Signature=812%2BZ1F0xbGcB09Tv%2FpS%2FsHGXjo%3D"},
+            url:"https://s3-us-west-2.amazonaws.com/perspective360photos/Moab_360.jpg"},
        ,
         
     ]
@@ -39,26 +39,15 @@ class Stories extends Component {
             </div>
           </div>
       </li>
-      {/* <li className="collection-item green avatar" >
-        <span className="row">
-        <div className="col s-3">
-        <i className="material-icons main-icon circle" style={{fontSize: '35px', marginTop: '-2px', marginLeft:'8px'}} 
-        >account_circle</i></div>
-        <div className="col s-9">
-        <p style={{ marginLeft:'10px'}}>User Name<br/>
-        </p>
-        </div>
-        
-        <p className="title" onClick={(e)=>this.props.attemptLogout(e)}>log out</p>
-        </span>
-      </li> */}
 
       { this.state.stories.map(story=>
             
             <li className="collection-item blue-grey story">
             <div className="row">
                 <div className="col s5 left-align">
-                <a href="#"><img className="thumb" src={story.url} width="300px" height="150px" style={{marginTop: '20px'}}></img></a>
+                <a href="#">
+                  <img onClick={(e)=>this.props.setView(e,story.url)} className="thumb" src={story.url} width="300px" height="150px" style={{marginTop: '20px'}}></img>
+                </a>
                 </div>
                 <div className="col s4 left-align">
                 <p><strong>Location: </strong>{story.location}</p>

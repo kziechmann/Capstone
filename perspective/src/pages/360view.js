@@ -21,15 +21,28 @@ class View360 extends Component {
         
     ]
   }
+
+  componentDidMount(){
+    document.getElementById('scene').addEventListener('loaded', function () {
+        document.getElementById('loader').style = "display:none;"
+     })
+  }
+
   render() {
+    
+
     return (
       <div className=" storyDash container" >
+      
     <div className="row">
-    <ul className="collection center-align ">
+    <ul className="collection center-align">
+        
       <li className="collection-item green darken-4 ">
-      {/* <iframe allowvr src="http://localhost:8081/index.html" width="720" height="480" /> */}
-        <a-scene embedded>
-            <a-sky src={this.props.view}></a-sky>
+        
+            <a-scene embedded >
+            <div id="loader" className="loading" style={{marginLeft: "345px",marginTop: "200px" }}>
+            </div>
+            <a-sky id="scene" src={this.props.view}></a-sky>
             </a-scene>
       </li>
      

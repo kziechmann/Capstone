@@ -9,8 +9,9 @@ import './App.css';
 class App extends Component {
   state = {
     loggedIn: true,
-    viewer: false,
-    view: ""
+    viewerOpen: false,
+    viewURL: "",
+    viewTitle: ""
   }
 
   attemptLogin = (event) =>{
@@ -25,17 +26,16 @@ class App extends Component {
 
   switchToView = (event) =>{
     event.preventDefault()
-    this.setState({viewer:true})
+    this.setState({viewerOpen:true})
   }
 
   switchToStories = (event) =>{
     event.preventDefault()
-    this.setState({viewer:false})
+    this.setState({viewerOpen:false})
   }
 
-  setView = (event, url) =>{
-    event.preventDefault()
-    this.setState({view:url})
+  setView = (id, url) =>{
+    this.setState({viewURL:url, viewTitle:id})
   }
 
   render() {
@@ -50,8 +50,8 @@ class App extends Component {
           {this.state.loggedIn ? <Nav attemptLogout={this.attemptLogout}  switchToStories={this.switchToStories} switchToView={this.switchToView}/> : ""}
         </div>
         <div className="col m8">
-          {this.state.loggedIn && !this.state.viewer? <Stories setView={this.setView}/> : ""}
-          {this.state.loggedIn && this.state.viewer? <View360 view={this.state.view}/> : ""}
+          {this.state.loggedIn && !this.state.viewerOpen? <Stories switchToStories={this.switchToStories} setView={this.setView} viewTitle={this.state.viewTitle}/> : ""}
+          {this.state.loggedIn && this.state.viewerOpen? <View360 view={this.state.viewURL}/> : ""}
         </div>
         <div className="col md2"></div>
         </div>

@@ -40,13 +40,13 @@ class Stories extends Component {
           </div>
       </li>
 
-      { this.state.stories.map(story=>
+      { this.state.stories.map((story, id)=>
             
-            <li className="collection-item blue-grey story">
-            <div className="row">
+            <li key={story.title} id={story.title} className={this.props.viewTitle == story.title? "collection-item green story" : "collection-item blue-grey story"} onClick={(event)=>this.props.setView(story.title,story.url)}>
+            <div  className="row">
                 <div className="col s5 left-align">
                 <a href="#">
-                  <img onClick={(e)=>this.props.setView(e,story.url)} className="thumb" src={story.url} width="300px" height="150px" style={{marginTop: '20px'}}></img>
+                  <img  className="thumb" onClick={e=>this.props.switchToStories(e)} src={story.url} width="300px" height="150px" style={{marginTop: '20px'}}></img>
                 </a>
                 </div>
                 <div className="col s4 left-align">
@@ -55,7 +55,8 @@ class Stories extends Component {
                 </div>
                 <div className="col s3 left-align ">
                 <h5>{story.title}</h5>
-                <a className="waves-effect waves-light green btn " href="/#" style={{  paddingRight:'55px'}}><i className="material-icons left">create</i>    Edit Story </a>
+                <a className="waves-effect waves-light green darken-2 btn " href="/#" style={{  paddingRight:'55px'}}><i className="material-icons left">create</i>    Edit Story </a>
+                <a className="waves-effect waves-light red darken-2 btn " href="/#" style={{  paddingRight:'55px', marginTop:"20px"}}><i className="material-icons left">delete</i>    Delete Story </a>
                 </div>
             </div>
             </li>

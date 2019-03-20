@@ -6,16 +6,16 @@ class Stories extends Component {
   state={
       stories: [
         {   title: "SKIING RED MOUNTAIN",
-            description: "From the top of Denali looking acrosss the Alaska range in all of its glory.",
-            location:  "63.0865043,-150.6297594",
+            description: "Spring Skiing in the backcountry of Colorado.",
+            location:  "39.4817,-106.0384",
             url:"https://s3-us-west-2.amazonaws.com/perspective360photos/Red_Mountain_360.jpg"},
         {   title: "FIRST FLATIRON SUMMIT",
-            description: "From the top of Denali looking acrosss the Alaska range in all of its glory.",
-            location:  "63.0865043,-150.6297594",
+            description: "From the top of the first flatiron near Boulder,CO.",
+            location:  "39.9905,-105.2947",
             url: "https://s3-us-west-2.amazonaws.com/perspective360photos/Flatirons_360.jpg"},
         {   title: "CANYONLANDS MOAB",
-            description: "From the top of Denali looking acrosss the Alaska range in all of its glory.",
-            location:  "63.0865043,-150.6297594",
+            description: "Sunset from Canyonlands National Park near Moab, UT.",
+            location:  "38.3269,-109.8783",
             url:"https://s3-us-west-2.amazonaws.com/perspective360photos/Moab_360.jpg"}
     ]
   }
@@ -27,7 +27,7 @@ class Stories extends Component {
       <li className="collection green darken-4 ">
           <div className="row">
             <div className="col s4 column-head" >
-              <h5> <i className="material-icons story-header" >language</i> View</h5>
+              <h5> <i className="material-icons story-header" >landscape</i> View</h5>
             </div>
             <div className="col s4 column-head">
                 <h5> Details</h5>

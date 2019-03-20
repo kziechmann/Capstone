@@ -47,7 +47,7 @@ class Nav extends Component {
     </ul>
     </div>
       <div className="collection mapBox grey darken-4">
-      <MapBox/>
+      <MapBox GPS={this.props.GPS}/>
       </div>
     
       </div>

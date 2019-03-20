@@ -81,8 +81,8 @@ class App extends Component {
         <div className="col m8">
           {this.state.loggedIn && this.state.page === "stories"? <Stories changePage={this.changePage} setView={this.setView} viewTitle={this.state.viewTitle}/> : ""}
           {this.state.loggedIn && this.state.page === "viewer"? <View360 view={this.state.viewURL}/> : ""}
-          {this.state.loggedIn && this.state.page === "upload"? <Upload /> : ""}
-          {this.state.loggedIn && this.state.page === "edit"? <Edit viewURL={this.state.viewURL} viewTitle={this.state.viewTitle} GPS={this.state.GPS} description={this.state.description}/> : ""}
+          {this.state.loggedIn && this.state.page === "upload"? <Upload changePage={this.changePage}/> : ""}
+          {this.state.loggedIn && this.state.page === "edit"? <Edit viewURL={this.state.viewURL} viewTitle={this.state.viewTitle} GPS={this.state.GPS} description={this.state.description} changePage={this.changePage}/> : ""}
         </div>
         <div className="col md2"></div>
         </div>

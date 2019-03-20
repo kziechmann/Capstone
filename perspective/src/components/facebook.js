@@ -35,7 +35,7 @@ export default class FacebookButton extends Component {
 
     if (this.props.loggedIn) {
       fbContent = (
-        <React.Fragment>
+        <React.Fragment >
         <li className="row collection-item avatar green" >
           <img className="circle avCircle" src={this.props.user.picture} alt={this.props.user.name} />
           <h6 ><strong>{this.props.user.name? this.props.user.name : "AnonymousUser"}</strong></h6>

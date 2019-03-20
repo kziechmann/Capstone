@@ -2,7 +2,23 @@ import React, { Component } from 'react';
 import '../App.css';
 
 class Upload extends Component {
-  state = {}
+  state={
+    viewURL: "",
+    viewTitle: "",
+    GPS: [],
+    description: ""
+  }
+
+  updateField(event){
+    let field = {[event.target.id]:event.target.value}
+    if(field.GPS) field.GPS = event.target.value.split(",")
+    this.setState(field)
+  }
+
+  submitChanges(){
+    alert("successfully uploaded image!")
+    this.props.changePage("stories")
+  }
 
   render() {
     return (
@@ -20,24 +36,24 @@ class Upload extends Component {
     <form className="col s12">
       <div className="row">
         <div className="input-field col s6">
-          <input id="view_title" type="text" className="validate white-text"/>
-          <label for="view_title">Image Title</label>
+          <input id="viewTitle" type="text" className="validate white-text" onChange={e=>this.updateField(e)}/>
+          <label for="viewTitle">Image Title</label>
         </div>
       </div>
       <div className="row">
         <div className="input-field col s12">
-          <input id="description" type="text" className="validate white-text"/>
+          <input id="description" type="text" className="validate white-text" onChange={e=>this.updateField(e)}/>
           <label for="description">Description</label>
         </div>
       </div>
       <div className="row">
         <div className="input-field col s12">
-          <input id="email" type="email" className="validate white-text"/>
-          <label for="email">Location / GPS Coordinates</label>
+          <input id="GPS" type="text" className="validate white-text" onChange={e=>this.updateField(e)}/>
+          <label for="GPS">Location / GPS Coordinates</label>
         </div>
       </div>
       <div className="file-field input-field">
-                <div className="btn">
+                <div className="btn green">
                     <span>File</span>
                     <input type="file"></input>
                 </div>
@@ -45,6 +61,9 @@ class Upload extends Component {
                     <input className="file-path validate white-text" type="text"></input>
                 </div>
             </div>
+            <div className="row center-align active">
+        <a className="waves-effect waves-light green darken-2 btn " href="/#" onClick={()=>this.submitChanges()} style={{   marginRight:'20px'}}><i className="material-icons left">create</i>  Upload Story </a>
+        </div>
     </form>
   </div>
         </div>

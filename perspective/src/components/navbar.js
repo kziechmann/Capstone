@@ -13,10 +13,10 @@ class Nav extends Component {
     <ul className="collection center-align ">
       <li className="collection-item green darken-4 ">
           <div className="row">
-              <h4> <i className="material-icons main-icon" style={{fontSize: '35px', display: 'inline-block'}} >language</i> Perspective</h4>
+              <h4> <i className="material-icons " style={{fontSize: '35px', display: 'inline-block', marginTop: "8px"}} >language</i> Perspective</h4>
           </div>
       </li>
-      <FacebookButton attemptLogout={this.props.attemptLogout} user={this.props.user} loggedIn={this.props.loggedIn} style={{fontSize: '35px', marginTop: '-2px', marginLeft:'8px'}} />
+      <FacebookButton attemptLogout={this.props.attemptLogout} user={this.props.user} loggedIn={this.props.loggedIn} />
 
       <li className="collection-item grey darken-4">
         <a className="waves-effect waves-light green btn"  href="/#" onClick={()=>this.props.changePage("stories")}><i className="material-icons left">map</i>My Stories</a>

@@ -4,14 +4,16 @@ import Nav from './components/navbar';
 import Stories from './pages/stories_dashboard';
 import View360 from './pages/360view';
 import Upload from './components/file_upload';
+import Edit from './pages/edit';
 import './App.css';
 
 class App extends Component {
   state = {
     loggedIn: true,
-    viewerOpen: false,
+    page: "stories",
     viewURL: "",
-    viewTitle: ""
+    viewTitle: "",
+    GPS: []
   }
 
   attemptLogin = (event) =>{
@@ -24,19 +26,19 @@ class App extends Component {
     this.setState({loggedIn:false})
   }
 
-  switchToView = (event) =>{
-    event.preventDefault()
-    this.setState({viewerOpen:true})
+  changePage = (page) =>{
+    this.setState({page:page})
   }
 
-  switchToStories = (event) =>{
-    event.preventDefault()
-    this.setState({viewerOpen:false})
+  setView = (story) =>{
+    this.setState({
+      viewURL:story.url,
+      viewTitle:story.title,
+      GPS: story.location.split(",")
+    })
   }
 
-  setView = (id, url) =>{
-    this.setState({viewURL:url, viewTitle:id})
-  }
+  
 
   render() {
     return (
@@ -47,11 +49,13 @@ class App extends Component {
         <div className="container">
         <div className="row">
         <div className="col m2">
-          {this.state.loggedIn ? <Nav attemptLogout={this.attemptLogout}  switchToStories={this.switchToStories} switchToView={this.switchToView}/> : ""}
+          {this.state.loggedIn ? <Nav attemptLogout={this.attemptLogout}  changePage={this.changePage} switchToView={this.switchToView}/> : ""}
         </div>
         <div className="col m8">
-          {this.state.loggedIn && !this.state.viewerOpen? <Stories switchToStories={this.switchToStories} setView={this.setView} viewTitle={this.state.viewTitle}/> : ""}
-          {this.state.loggedIn && this.state.viewerOpen? <View360 view={this.state.viewURL}/> : ""}
+          {this.state.loggedIn && this.state.page === "stories"? <Stories changePage={this.changePage} setView={this.setView} viewTitle={this.state.viewTitle}/> : ""}
+          {this.state.loggedIn && this.state.page === "viewer"? <View360 view={this.state.viewURL}/> : ""}
+          {this.state.loggedIn && this.state.page === "upload"? <Upload /> : ""}
+          {this.state.loggedIn && this.state.page === "edit"? <Edit viewURL={this.state.viewURL}/> : ""}
         </div>
         <div className="col md2"></div>
         </div>

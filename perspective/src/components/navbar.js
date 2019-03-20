@@ -30,23 +30,23 @@ class Nav extends Component {
         <p className="title" onClick={(e)=>this.props.attemptLogout(e)}>log out</p>
         </span>
      </li>
-      <li className="collection-item blue-grey">
-        <a className="waves-effect waves-light green btn"  onClick={e=>this.props.switchToStories(e)}><i className="material-icons left">map</i>My Stories</a>
+      <li className="collection-item grey darken-4">
+        <a className="waves-effect waves-light green btn"  href="/#" onClick={()=>this.props.changePage("stories")}><i className="material-icons left">map</i>My Stories</a>
      </li>
-      <li className="collection-item blue-grey">
-       <a className="waves-effect waves-light green btn" href="/#" href="/#" style={{  paddingRight:'55px'}}><i className="material-icons left">backup</i>Upload</a>
+      <li className="collection-item grey darken-4">
+       <a className="waves-effect waves-light green btn" href="/#" style={{  paddingRight:'55px'}} onClick={()=>this.props.changePage("upload")}><i className="material-icons left">backup</i>Upload</a>
       </li>
-      <li className="collection-item blue-grey">
-        <a className="waves-effect waves-light green btn" href="/#" onClick={e=>this.props.switchToView(e)} style={{  paddingRight:'65px'}}><i className="material-icons left">explore</i>View</a>
+      <li className="collection-item grey darken-4">
+        <a className="waves-effect waves-light green btn" href="/#" onClick={()=>this.props.changePage("viewer")} style={{  paddingRight:'65px'}}><i className="material-icons left">explore</i>View</a>
       </li>
-      <li className="collection-item blue-grey">
-        <a className="waves-effect waves-light green btn" href="/#" style={{  paddingRight:'65px'}}><i className="material-icons left">create</i> Edit </a>
+      <li className="collection-item grey darken-4">
+        <a className="waves-effect waves-light green btn"  href="/#"style={{  paddingRight:'65px'}} onClick={()=>this.props.changePage("edit")}><i className="material-icons left">create</i> Edit </a>
       </li>
       
       
     </ul>
     </div>
-      <div className="collection mapBox">
+      <div className="collection mapBox grey darken-4">
       <MapBox/>
       </div>
     

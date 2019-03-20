@@ -23,11 +23,11 @@ class Login extends Component {
           <div className="card-action green darken-4">
         <div>
           <div className="input-field col s6">
-              <input placeholder="User" id="user_name" type="text" className="validate white-text"></input>
+              <input id="user_name" type="text" className="validate white-text"></input>
               <label htmlFor="user_name"> <i className="material-icons left">account_box</i> Username</label>
           </div>
           <div className="input-field col s6">
-          <input placeholder="Email" id="email" type="text" className="validate white-text"></input>
+          <input  id="email" type="text" className="validate white-text"></input>
               <label htmlFor="email"><i className="material-icons left">mail_outline</i> Email</label>
           </div>
         </div>

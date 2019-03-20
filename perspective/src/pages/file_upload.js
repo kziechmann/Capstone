@@ -15,10 +15,31 @@ class Upload extends Component {
     this.setState(field)
   }
 
-  submitChanges(){
-    alert("successfully uploaded image!")
-    this.props.changePage("stories")
-  }
+  submitUpload(){
+    let fileInput = document.getElementById('fileUpload')
+    let image = fileInput.files[0]
+    fetch('http://localhost:5000/image/', { // Your POST endpoint
+      method: 'POST',
+      headers: {
+        "Content-Type": "image"
+      },
+      mode: "cors",
+      body: image// This is your file object
+    }).then(
+      response => response.json() // if the response is a JSON object
+    ).then(
+      
+      success => {
+        alert("successfully uploaded image!" , success 
+        )
+        return  this.props.changePage("stories")
+      }// Handle the success response object
+    ).catch(
+      error => console.log(error) // Handle the error response object
+    );
+    // alert("successfully uploaded image!")
+   
+  };
 
   render() {
     return (
@@ -27,7 +48,7 @@ class Upload extends Component {
             <div className="col s12 center-align">
             <span>
             {this.state.viewURL? 
-            <img src={this.state.viewURL} style={{width:"500px",height:"250px", marginTop:"-30px"}}/>
+            <img alt="Upload Preview" src={this.state.viewURL} style={{width:"500px",height:"250px", marginTop:"-30px"}}/>
              :<i className="material-icons left" style={{fontSize:"100px", color:"white", marginLeft:"45%"}}>screen_share</i>}
             </span>
             </div>
@@ -55,14 +76,14 @@ class Upload extends Component {
       <div className="file-field input-field">
                 <div className="btn green">
                     <span>File</span>
-                    <input type="file"></input>
+                    <input id="fileUpload" type="file"></input>
                 </div>
-                <div className="file-path-wrapper">
-                    <input className="file-path validate white-text" type="text"></input>
+                <div className="file-path-wrapper" >
+                    <input  className="file-path validate white-text" type="text" onChange={e=>this.updateField(e)}></input>
                 </div>
             </div>
             <div className="row center-align active">
-        <a className="waves-effect waves-light green darken-2 btn " href="/#" onClick={()=>this.submitChanges()} style={{   marginRight:'20px'}}><i className="material-icons left">create</i>  Upload Story </a>
+        <a className="waves-effect waves-light green darken-2 btn " href="/#" onClick={()=>this.submitUpload()} style={{   marginRight:'20px'}}><i className="material-icons left">create</i>  Upload Story </a>
         </div>
     </form>
   </div>

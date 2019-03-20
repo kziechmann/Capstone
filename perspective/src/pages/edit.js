@@ -33,7 +33,7 @@ class Edit extends Component {
     <div className="fileUpload container collection ">
       <div className="row center-align">
           <div className="col s12 ">
-          <img alt="Image to Edit Thumb" className="preview" src={this.props.viewURL}  ></img>
+          <img alt="To Edit" className="preview" src={this.props.viewURL}  ></img>
           </div>
      </div>
       <form className="col s12">
@@ -41,21 +41,21 @@ class Edit extends Component {
           <div className="input-field col s12 ">
           <span className="white-text"> Title </span>
             <input id="viewTitle" type="text" className="validate white-text" placeholder={this.state.viewTitle} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
-            <label hmtlFor="viewTitle"></label>
+            <label htmlFor="viewTitle"></label>
           </div>
         </div>
         <div className="row center-align active">
           <div className="col s12 ">
           <span className="white-text"> Description </span>
             <input id="description" type="text" className="validate white-text materialize-textarea " placeholder={this.state.description} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
-            <label hmtlFor="description"></label>
+            <label htmlFor="description"></label>
           </div>
         </div>
         <div className="row center-align active">
           <div className="input-field col s12">
           <span className="white-text"> Location </span>
             <input id="GPS" type="text" className="validate white-text" placeholder={this.state.GPS} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
-            <label hmtlFor="GPS"></label>
+            <label htmlFor="GPS"></label>
           </div>
         </div>
         <div className="row center-align active">

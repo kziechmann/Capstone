@@ -23,7 +23,7 @@ class Nav extends Component {
         <i className="material-icons main-icon circle" style={{fontSize: '35px', marginTop: '-2px', marginLeft:'8px'}} 
         >account_circle</i></div>
         <div className="col s-9">
-        <p style={{ marginLeft:'10px'}}>User Name<br/>
+        <p style={{ marginLeft:'-10px'}}>kziechmann@gmail.com<br/>
         </p>
         </div>
         

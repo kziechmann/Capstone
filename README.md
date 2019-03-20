@@ -47,7 +47,7 @@ let generateProject = project => {
 
 ```shell
 $ brew update
-$ brew install fvcproductions
+$ brew install perspective360
 ```
 
 > now install npm and bower packages
@@ -80,8 +80,8 @@ $ bower install
 
 Reach out to me at one of the following places!
 
-- Website at <a href="http://fvcproductions.com" target="_blank">`fvcproductions.com`</a>
-- Twitter at <a href="http://twitter.com/fvcproductions" target="_blank">`@fvcproductions`</a>
+- Website at <a href="http://kevinziechmann.com" target="_blank">`kevinziechmann.com`</a>
+- Twitter at <a href="https://twitter.com/kevinziechmann" target="_blank">`@kziechmann`</a>
 - Insert more social links here.
 
 ---
@@ -91,4 +91,4 @@ Reach out to me at one of the following places!
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
-- Copyright 2015 © <a href="http://fvcproductions.com" target="_blank">FVCproductions</a>.
+- Copyright 2015 © <a href="http://kevinziechmann.com" target="_blank">Kevin Ziechmnann Media</a>.

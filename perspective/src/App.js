@@ -14,17 +14,42 @@ class App extends Component {
     viewURL: "",
     viewTitle: "",
     GPS: [],
-    description : ""
+    description : "",
+    user: {
+            userID: "",
+            name: "",
+            email: "",
+            picture: ""
+          }
   }
 
-  attemptLogin = (event) =>{
-    event.preventDefault()
-    this.setState({loggedIn:true})
+  attemptLogin = (user) =>{
+    this.setState({
+      loggedIn:true,
+      user:{
+        userID: user.userID,
+        name: user.name,
+        email: user.email,
+        picture: user.picture
+      }
+    })
   }
 
   attemptLogout = (event) =>{
-    alert("LOUGOUTOTUT")
-    this.setState({loggedIn:false})
+    this.setState({
+      loggedIn:false,
+      page: "stories",
+      viewURL: "",
+      viewTitle: "",
+      GPS: [],
+      description : "",
+      user: {
+              userID: "",
+              name: "",
+              email: "",
+              picture: ""
+            }
+    })
   }
 
   changePage = (page) =>{
@@ -47,11 +72,11 @@ class App extends Component {
       <div className="App">
       <div className='background_photo'>
       </div >
-        {!this.state.loggedIn? <Login attemptLogin={this.attemptLogin}/> : ""}
+        {!this.state.loggedIn? <Login attemptLogin={this.attemptLogin} loggedIn={this.state.loggedIn}/> : ""}
         <div className="container">
         <div className="row">
         <div className="col m2">
-          {this.state.loggedIn ? <Nav attemptLogout={this.attemptLogout}  changePage={this.changePage} switchToView={this.switchToView} GPS={this.state.GPS.map(coord=>Number(coord))}/> : ""}
+          {this.state.loggedIn ? <Nav attemptLogout={this.attemptLogout}  changePage={this.changePage} switchToView={this.switchToView} GPS={this.state.GPS.map(coord=>Number(coord))} user={this.state.user} loggedIn={this.state.loggedIn}/> : ""}
         </div>
         <div className="col m8">
           {this.state.loggedIn && this.state.page === "stories"? <Stories changePage={this.changePage} setView={this.setView} viewTitle={this.state.viewTitle}/> : ""}

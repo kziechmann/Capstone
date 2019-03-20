@@ -43,6 +43,12 @@ a-scene {
 
 }
 
+.avCircle{
+  margin-left:30px;
+  margin-top:10px;
+  box-shadow: 3px 2px 3px 1px rgba(0,0,0,0.5);
+}
+
 .BTN360{
   margin-top: 30px;
   margin-bottom: 30px;

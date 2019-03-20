@@ -16,7 +16,7 @@ class Stories extends Component {
         {   title: "CANYONLANDS MOAB",
             description: "Sunset from Canyonlands National Park near Moab, UT.",
             location:  "38.3269,-109.8783",
-            url:"https://perspective360photos.s3.us-west-2.amazonaws.com/1553096222764"}
+            url:"https://s3-us-west-2.amazonaws.com/perspective360photos/Moab_360.jpg"}
     ]
   }
   render() {

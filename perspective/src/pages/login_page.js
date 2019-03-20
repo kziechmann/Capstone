@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import FacebookButton from '../components/facebook';
 import '../App.css';
 
 class Login extends Component {
@@ -37,12 +37,18 @@ class Login extends Component {
             <label htmlFor="password">Password</label>
           </div>
         </div>
+        <div className="row">
+          <FacebookButton attemptLogin={this.props.attemptLogin} loggedIn={this.props.loggedIn}/>
+          </div>
           <div className="row">
-          <button className="btn waves-effect waves-light green" type="submit" name="action">Submit
+          <button className="btn waves-effect waves-light green" type="submit" name="action">Login
             <i className="material-icons right">send</i>
           </button>
+          
           </div>
+          
           </div>
+          
         </div>
       </form>
     </div>

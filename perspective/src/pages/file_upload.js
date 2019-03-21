@@ -16,27 +16,35 @@ class Upload extends Component {
   }
 
   submitUpload(){
-    let fileInput = document.getElementById('fileUpload')
-    let image = fileInput.files[0]
-    fetch('http://localhost:5000/image/', { // Your POST endpoint
-      method: 'POST',
-      headers: {
-        "Content-Type": "image"
-      },
-      mode: "cors",
-      body: image// This is your file object
-    }).then(
-      response => response.json() // if the response is a JSON object
-    ).then(
+    let imageInput = document.getElementById('image')
+    let viewTitle = document.getElementById('viewTitle').value
+    let description = document.getElementById('description').value
+    let GPS = document.getElementById('GPS').value
+    let image = imageInput.files[0]
+    let formData  = new FormData()
+    formData.append('image', image)
+    formData.append('viewTitle', viewTitle)
+    formData.append('GPS', GPS)
+    formData.append('description', description)
+    for (var value of formData.values()) {
+      console.log(value); 
+    }
+    // fetch('http://localhost:5000/images/1', { // Your POST endpoint
+    //   method: 'POST',
+    //   mode:"cors",
+    //   body: formData// This is your file object
+    // }).then(
+    //   response => response.json() // if the response is a JSON object
+    // ).then(
       
-      success => {
-        alert("successfully uploaded image!" , success 
-        )
-        return  this.props.changePage("stories")
-      }// Handle the success response object
-    ).catch(
-      error => console.log(error) // Handle the error response object
-    );
+    //   success => {
+    //     alert("successfully uploaded image!" , success 
+    //     )
+    //     return  this.props.changePage("stories")
+    //   }// Handle the success response object
+    // ).catch(
+    //   error => console.log(error) // Handle the error response object
+    // );
     // alert("successfully uploaded image!")
    
   };
@@ -54,7 +62,7 @@ class Upload extends Component {
             </div>
        </div>
         <div className="row">
-    <form className="col s12">
+    <form id="uploadForm" className="col s12">
       <div className="row">
         <div className="input-field col s6">
           <input id="viewTitle" type="text" className="validate white-text" onChange={e=>this.updateField(e)}/>
@@ -76,7 +84,7 @@ class Upload extends Component {
       <div className="file-field input-field">
                 <div className="btn green">
                     <span>File</span>
-                    <input id="fileUpload" type="file"></input>
+                    <input id="image" type="file" accept="image/jpg"></input>
                 </div>
                 <div className="file-path-wrapper" >
                     <input  className="file-path validate white-text" type="text" onChange={e=>this.updateField(e)}></input>

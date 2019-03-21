@@ -24,8 +24,29 @@ class Edit extends Component {
   }
 
   submitChanges(){
-    alert("successfully saved changes!")
-    this.props.changePage("stories")
+    let viewTitle = document.getElementById('viewTitle').value
+    let description = document.getElementById('description').value
+    let GPS = document.getElementById('GPS').value
+    let formData  = {
+        viewTitle: viewTitle,
+        description: description,
+        GPS: GPS,
+    }
+    fetch('http://localhost:5000/images/1', { // Your POST endpoint
+      method: 'PATCH',
+      mode:"cors",
+      body: formData// This is your file object
+    }).then(
+      response => response.json() // if the response is a JSON object
+    ).then(
+      success => {
+        alert("successfully uploaded image!" , success 
+        )
+        return  this.props.changePage("stories")
+      }// Handle the success response object
+    ).catch(
+      error => console.log(error) // Handle the error response object
+    );
   }
 
   render() {

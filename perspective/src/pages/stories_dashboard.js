@@ -4,27 +4,19 @@ import '../App.css';
 
 class Stories extends Component {
   state={
-      stories: [
-        {   title: "SKIING RED MOUNTAIN",
-            description: "Spring Skiing in the backcountry of Colorado.",
-            location:  "39.4817,-106.0384",
-            url:"https://s3-us-west-2.amazonaws.com/perspective360photos/Red_Mountain_360.jpg"},
-        {   title: "FIRST FLATIRON SUMMIT",
-            description: "From the top of the first flatiron near Boulder,CO.",
-            location:  "39.9905,-105.2947",
-            url: "https://s3-us-west-2.amazonaws.com/perspective360photos/Flatirons_360.jpg"},
-        {   title: "CANYONLANDS MOAB",
-            description: "Sunset from Canyonlands National Park near Moab, UT.",
-            location:  "38.3269,-109.8783",
-            url:"https://s3-us-west-2.amazonaws.com/perspective360photos/Moab_360.jpg"}
-    ]
+      stories: []
   }
 
   async componentDidMount(){
-    const response = await fetch('http://localhost:5000/images/')
+    const response = await fetch('http://localhost:5000/users/1')
     const json = await response.json()
-    console.log(json)
-    // this.setState({stories:json})
+    const stories = json.map(story=> (
+        {title:story.title,
+        description: story.description,
+        location: story.GPS,
+        url: story.url}
+      )).reverse()
+    this.setState({stories:stories})
   }
 
   render() {

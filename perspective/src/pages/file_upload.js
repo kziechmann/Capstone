@@ -15,38 +15,36 @@ class Upload extends Component {
     this.setState(field)
   }
 
-  submitUpload(){
-    let imageInput = document.getElementById('image')
-    let viewTitle = document.getElementById('viewTitle').value
-    let description = document.getElementById('description').value
-    let GPS = document.getElementById('GPS').value
-    let image = imageInput.files[0]
+  async submitUpload(){
+    const imageInput = document.getElementById('image')
+    const image = imageInput.files[0]
     let formData  = new FormData()
     formData.append('image', image)
-    formData.append('viewTitle', viewTitle)
-    formData.append('GPS', GPS)
-    formData.append('description', description)
-    for (var value of formData.values()) {
-      console.log(value); 
+
+    const response = await fetch('http://localhost:5000/images/', { 
+      method: 'POST',
+      mode:"cors",
+      body: formData
+    })
+    const imageRes = await response.json()
+    console.log('response:  ',imageRes.imageUrl)
+    const formJSON = {
+      title: document.getElementById('viewTitle').value,
+      url: "https://s3-us-west-2.amazonaws.com/perspective360photos/1553201169492",
+      description: document.getElementById('description').value,
+      GPS: document.getElementById('GPS').value,
     }
-    // fetch('http://localhost:5000/images/1', { // Your POST endpoint
-    //   method: 'POST',
-    //   mode:"cors",
-    //   body: formData// This is your file object
-    // }).then(
-    //   response => response.json() // if the response is a JSON object
-    // ).then(
-      
-    //   success => {
-    //     alert("successfully uploaded image!" , success 
-    //     )
-    //     return  this.props.changePage("stories")
-    //   }// Handle the success response object
-    // ).catch(
-    //   error => console.log(error) // Handle the error response object
-    // );
-    // alert("successfully uploaded image!")
-   
+    
+    console.log('formJSON:  ',formJSON)
+    this.props.changePage("stories") 
+    const users_images = await fetch('http://localhost:5000/users_images/1', { 
+      method: 'POST',
+      mode:"cors",
+      body: formJSON
+    })
+    const userJson = await users_images.json()
+    console.log('users_images:  ',userJson)
+    
   };
 
   render() {

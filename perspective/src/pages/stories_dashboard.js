@@ -19,6 +19,14 @@ class Stories extends Component {
             url:"https://s3-us-west-2.amazonaws.com/perspective360photos/Moab_360.jpg"}
     ]
   }
+
+  async componentDidMount(){
+    const response = await fetch('http://localhost:5000/images/')
+    const json = await response.json()
+    console.log(json)
+    // this.setState({stories:json})
+  }
+
   render() {
     return (
       <div className=" storyDash container" >

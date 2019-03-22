@@ -35,7 +35,7 @@ class Nav extends Component {
       
     </ul>
     </div>
-      <div className="collection mapBox grey darken-4">
+      <div className="collection mapBox grey darken-4" style={{marginTop:"-75px", marginLeft:"-5px"}}>
       <MapBox GPS={this.props.GPS}/>
       </div>
     

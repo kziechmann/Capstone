@@ -50,7 +50,7 @@ class Upload extends Component {
   render() {
     return (
         <div className="fileUpload container collection">
-        <div className="row">
+        <div className="row" style={{marginTop:"50px"}}>
             <div className="col s12 center-align">
             <span>
             {this.state.viewURL? 

@@ -40,8 +40,7 @@ class Edit extends Component {
       response => response.json() // if the response is a JSON object
     ).then(
       success => {
-        alert("successfully uploaded image!" , success 
-        )
+        alert("successfully uploaded image!" , success )
         return  this.props.changePage("stories")
       }// Handle the success response object
     ).catch(
@@ -52,15 +51,15 @@ class Edit extends Component {
   render() {
     return (
     <div className="fileUpload container collection ">
-      <div className="row center-align">
+      <div className="row center-align" style={{marginTop:"125px"}}>
           <div className="col s12 ">
           <img alt="To Edit" className="preview" src={this.props.viewURL}  ></img>
           </div>
      </div>
       <form className="col s12">
       <div className="row center-align active">
-          <div className="input-field col s12 ">
-          <span className="white-text"> Title </span>
+          <div className="col s12 ">
+          <span className="white-text" style={{marginLeft:"10%", marginRight:"10%"}}> Title </span>
             <input id="viewTitle" type="text" className="validate white-text" placeholder={this.state.viewTitle} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
             <label htmlFor="viewTitle"></label>
           </div>

@@ -12,7 +12,7 @@ class Login extends Component {
         <div className="card green row login-form" style={{height:"400px"}}>
           <div className="card-content white-text ">
            
-              <img alt="logo" className="logo" src="https://s3-us-west-2.amazonaws.com/perspective360photos/P360_logo_3.png"></img>
+              <img alt="logo" className="logo" src="https://s3-us-west-2.amazonaws.com/perspective360photos/P360_logo_1.png"></img>
               <strong> Communicate spacially with this platform to upload and share your geo-tagged 360 photos.</strong>
            
            

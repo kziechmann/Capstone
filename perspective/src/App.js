@@ -32,7 +32,7 @@ class App extends Component {
         description: story.description,
         location: story.GPS.split(","),
         url: story.url}
-      )).reverse()
+      ))
     let newState = this.state
     newState.viewURL = stories[0].url
     newState.GPS = stories[0].location

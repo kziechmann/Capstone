@@ -16,8 +16,8 @@ class View360 extends Component {
     return (
       <div className=" storyDash container" >
       
-    <div className="row">
-    <ul className="collection center-align">
+    <div className="row" style={{marginTop:"35px"}}>
+    <ul className="collection center-align" >
         
       <li className="collection-item grey darken-4 ">
         

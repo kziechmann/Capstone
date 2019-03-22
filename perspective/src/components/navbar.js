@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import FacebookButton from './facebook';
+import GoogleButton from './google';
 import '../App.css';
 import MapBox from './mapbox';
 
@@ -12,11 +13,11 @@ class Nav extends Component {
     <div className="row">
     <ul className="collection center-align ">
       <li className="collection-item green darken-4 ">
-          <div className="row">
-              <h4> <i className="material-icons " style={{fontSize: '35px', display: 'inline-block', marginTop: "8px"}} >language</i> Perspective</h4>
+          <div className="row" style={{height:'60px'}}>
+              <img alt="perspective logo" src="https://s3-us-west-2.amazonaws.com/perspective360photos/P360_logo_2.png" style={{width:'250px', marginLeft: '-15px'}}></img>
           </div>
       </li>
-      <FacebookButton attemptLogout={this.props.attemptLogout} user={this.props.user} loggedIn={this.props.loggedIn} />
+      <FacebookButton attemptLogout={this.props.attemptLogout} user={this.props.user} loggedIn={this.props.loggedIn}/>
 
       <li className="collection-item grey darken-4">
         <a className="waves-effect waves-light green btn"  href="/#" onClick={()=>this.props.changePage("stories")}><i className="material-icons left">map</i>My Stories</a>

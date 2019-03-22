@@ -40,7 +40,7 @@ class Stories extends Component {
 
       { this.state.stories.map((story, id)=>
             
-            <li key={story.title} id={story.title} className={this.props.viewTitle === story.title? "collection green story" : "collection story"} onClick={(event)=>this.props.setView(story)}>
+            <li key={story.title} id={story.title} style={{marginTop: '20px'}} className={this.props.viewTitle === story.title? "collection green story" : "collection story"} onClick={(event)=>this.props.setView(story)}>
             <div  className="row">
                 <div className="col s5 left-align">
                 <a href="#">
@@ -60,8 +60,15 @@ class Stories extends Component {
             </li>
             )
         }
-      
-      
+    </ul>
+    <ul class="pagination center-align">
+      <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+      <li class="active green"><a href="#!">1</a></li>
+      <li class="waves-effect"><a href="#!">2</a></li>
+      <li class="waves-effect"><a href="#!">3</a></li>
+      <li class="waves-effect"><a href="#!">4</a></li>
+      <li class="waves-effect"><a href="#!">5</a></li>
+      <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
     </ul>
     </div>
     </div>

@@ -20,7 +20,26 @@ class App extends Component {
             name: "",
             email: "",
             picture: ""
-          }
+          },
+    stories: []
+  }
+
+  async componentDidMount(){
+    const response = await fetch('http://localhost:5000/users/1')
+    const json = await response.json()
+    const stories = json.map(story=> (
+        {title: story.title,
+        description: story.description,
+        location: story.GPS.split(","),
+        url: story.url}
+      )).reverse()
+    let newState = this.state
+    newState.viewURL = stories[0].url
+    newState.GPS = stories[0].location
+    newState.viewTitle = stories[0].title
+    newState.description = stories[0].description
+    newState.stories = stories
+    this.setState(newState)
   }
 
   attemptLogin = (user) =>{
@@ -60,7 +79,7 @@ class App extends Component {
     this.setState({
       viewURL:story.url,
       viewTitle:story.title,
-      GPS: story.location.split(","),
+      GPS: story.location,
       description: story.description
     })
   }
@@ -79,8 +98,8 @@ class App extends Component {
           {this.state.loggedIn ? <Nav attemptLogout={this.attemptLogout}  changePage={this.changePage} switchToView={this.switchToView} GPS={this.state.GPS.map(coord=>Number(coord))} user={this.state.user} loggedIn={this.state.loggedIn}/> : ""}
         </div>
         <div className="col m8">
-          {this.state.loggedIn && this.state.page === "stories"? <Stories changePage={this.changePage} setView={this.setView} viewTitle={this.state.viewTitle}/> : ""}
-          {this.state.loggedIn && this.state.page === "viewer"? <View360 view={this.state.viewURL}/> : ""}
+          {this.state.loggedIn && this.state.page === "stories"? <Stories stories={this.state.stories} changePage={this.changePage} setView={this.setView} viewTitle={this.state.viewTitle}/> : ""}
+          {this.state.loggedIn && this.state.page === "viewer"? <View360 stories={this.state.stories} view={this.state.viewURL}/> : ""}
           {this.state.loggedIn && this.state.page === "upload"? <Upload changePage={this.changePage}/> : ""}
           {this.state.loggedIn && this.state.page === "edit"? <Edit viewURL={this.state.viewURL} viewTitle={this.state.viewTitle} GPS={this.state.GPS} description={this.state.description} changePage={this.changePage}/> : ""}
         </div>

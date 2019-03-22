@@ -3,21 +3,7 @@ import React, { Component } from 'react';
 import '../App.css';
 
 class Stories extends Component {
-  state={
-      stories: []
-  }
-
-  async componentDidMount(){
-    const response = await fetch('http://localhost:5000/users/1')
-    const json = await response.json()
-    const stories = json.map(story=> (
-        {title:story.title,
-        description: story.description,
-        location: story.GPS,
-        url: story.url}
-      )).reverse()
-    this.setState({stories:stories})
-  }
+  
 
   render() {
     return (
@@ -38,7 +24,7 @@ class Stories extends Component {
           </div>
       </li>
 
-      { this.state.stories.map((story, id)=>
+      { this.props.stories.map((story, id)=>
             
             <li key={story.title} id={story.title} style={{marginTop: '20px'}} className={this.props.viewTitle === story.title? "collection green story" : "collection story"} onClick={(event)=>this.props.setView(story)}>
             <div  className="row">

@@ -36,7 +36,7 @@ class View360 extends Component {
         <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_downward</i></a>
         <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_upward</i></a>
         <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_forward</i></a>
-
+        
         </div>
         </div>
     </div>

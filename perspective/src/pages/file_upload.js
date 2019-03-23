@@ -12,11 +12,24 @@ class Upload extends Component {
   updateField(event){
     let field = {[event.target.id]:event.target.value}
     if(field.GPS) field.GPS = event.target.value.split(",")
+    if(field.viewURL){
+      const file = document.getElementById('viewURL').files[0]
+      this.setState({
+          viewUrl: URL.createObjectURL(file)
+      })
+    }
     this.setState(field)
+    console.log(this.state)
   }
 
+
+  componentDidUpdate(){
+
+  }
+
+
   async submitUpload(){
-    const imageInput = document.getElementById('image')
+    const imageInput = document.getElementById('viewURL')
     const image = imageInput.files[0]
     let formData  = new FormData()
     formData.append('image', image)
@@ -53,8 +66,8 @@ class Upload extends Component {
         <div className="row" style={{marginTop:"50px"}}>
             <div className="col s12 center-align">
             <span>
-            {this.state.viewURL? 
-            <img alt="Upload Preview" src={this.state.viewURL} style={{width:"500px",height:"250px", marginTop:"-30px"}}/>
+            {this.state.viewURL !== ""? 
+            <img id="preview" alt="Upload Preview" className="preview obj" src={this.state.viewURL} style={{width:"500px",height:"250px", marginTop:"-30px"}}/>
              :<i className="material-icons left" style={{fontSize:"100px", color:"white", marginLeft:"45%"}}>screen_share</i>}
             </span>
             </div>
@@ -82,7 +95,7 @@ class Upload extends Component {
       <div className="file-field input-field">
                 <div className="btn green">
                     <span>File</span>
-                    <input id="image" type="file" accept="image/jpg"></input>
+                    <input id="viewURL" type="file" accept="image/jpg" onChange={e=>this.updateField(e)}></input>
                 </div>
                 <div className="file-path-wrapper" >
                     <input  className="file-path validate white-text" type="text" onChange={e=>this.updateField(e)}></input>

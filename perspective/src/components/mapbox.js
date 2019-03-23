@@ -11,7 +11,9 @@ class MapBox extends Component {
     componentDidMount=()=>{
         this.map = new mapboxgl.Map({
             container: this.mapContainer,
-            style: 'mapbox://styles/kziechmann/cjtkhbym50qv01fok6kak65a2'
+            style: 'mapbox://styles/kziechmann/cjtkhbym50qv01fok6kak65a2',
+            center: [-105.2947,39.9905],
+            zoom:1
           });
           this.map.addControl(new mapboxgl.FullscreenControl());
           this.map.loadImage('https://s3-us-west-2.amazonaws.com/perspective360photos/PMarker.png', (error, image)=> {

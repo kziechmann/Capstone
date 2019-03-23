@@ -46,7 +46,7 @@ class Stories extends Component {
 
       { this.props.stories.slice((this.state.currentPage-1)*3,(this.state.currentPage)*3).map((story, id)=>
             
-            <li key={story.title} id={story.title} style={{marginTop: '20px'}} className={this.props.viewTitle === story.title? "collection green story" : "collection story"} onClick={(event)=>this.props.setView(story)}>
+            <li key={story.title} id={story.title} className={this.props.viewTitle === story.title? "collection green story" : "collection story"} onClick={(event)=>this.props.setView(story)}>
             <div  className="row">
                 <div className="col s5 left-align">
                 <a href="#">
@@ -67,12 +67,12 @@ class Stories extends Component {
             )
         }
     </ul>
-    <ul class="pagination center-align">
-      <li id="prev" class={this.state.currentPage === 1? "waves-effect" : "disabled"}><a href="#!" onClick={()=>this.prevPage()}><i class="material-icons">chevron_left</i></a></li>
+    <ul className="pagination center-align">
+      <li id="prev" className={this.state.currentPage === 1? "waves-effect" : "disabled"}><a href="#!" onClick={()=>this.prevPage()}><i className="material-icons">chevron_left</i></a></li>
       {this.props.stories.map((story,idx) => {
-          return idx%3 == 0? <li id={(idx/3)+1} class={this.state.currentPage === (idx/3)+1 ? "active green" : "waves-effect disabled"}><a href="#!" onClick={()=>this.changePage((idx/3)+1)}>{(idx/3)+1}</a></li> : ""
+          return idx%3 == 0? <li key={idx} id={(idx/3)+1} className={this.state.currentPage === (idx/3)+1 ? "active green" : "waves-effect disabled"}><a href="#!" onClick={()=>this.changePage((idx/3)+1)}>{(idx/3)+1}</a></li> : ""
       })}
-      <li id="next" class={this.state.currentPage < this.state.numPages?  "disabled": "waves-effect" }><a href="#!" onClick={()=>this.nextPage()}><i class="material-icons">chevron_right</i></a></li>
+      <li id="next" className={this.state.currentPage < this.state.numPages?  "disabled": "waves-effect" }><a href="#!" onClick={()=>this.nextPage()}><i className="material-icons">chevron_right</i></a></li>
     </ul>
     </div>
     </div>

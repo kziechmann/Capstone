@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import FacebookButton from './facebook';
-import GoogleButton from './google';
 import '../App.css';
 import MapBox from './mapbox';
 

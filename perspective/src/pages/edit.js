@@ -51,7 +51,7 @@ class Edit extends Component {
   render() {
     return (
     <div className="fileUpload container collection ">
-      <div className="row center-align" style={{marginTop:"125px"}}>
+      <div className="row center-align" style={{marginTop:"75px"}}>
           <div className="col s12 ">
           <img alt="To Edit" className="preview" src={this.props.viewURL}  ></img>
           </div>

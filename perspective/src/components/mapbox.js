@@ -8,15 +8,15 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoia3ppZWNobWFubiIsImEiOiJjanRhaGRlcXowYjBiNDVvO
 
 class MapBox extends Component {
 
-    componentDidMount=()=>{
-        this.map = new mapboxgl.Map({
+    componentDidMount= async ()=>{
+        this.map = await new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/kziechmann/cjtkhbym50qv01fok6kak65a2',
             center: [-105.2947,39.9905],
             zoom:1
           });
-          this.map.addControl(new mapboxgl.FullscreenControl());
-          this.map.loadImage('https://s3-us-west-2.amazonaws.com/perspective360photos/PMarker.png', (error, image)=> {
+         this.map.addControl(new mapboxgl.FullscreenControl());
+          this.map.loadImage('https://s3-us-west-2.amazonaws.com/perspective360photos/PMarker.png',(error, image)=> {
             if (error) throw error;
             
             this.map.addImage('p360', image);
@@ -43,9 +43,10 @@ class MapBox extends Component {
             })
             
             })
-          
+        this.map.on('click', (e) => {
+          this.props.setNewGPS(e)
+          });
       }
-    
 
     componentWillUnmount= ()=> {
         this.map.remove()
@@ -53,7 +54,7 @@ class MapBox extends Component {
 
     componentDidUpdate(){
       
-      this.map.loadImage('https://s3-us-west-2.amazonaws.com/perspective360photos/PMarker.png', (error, image)=> {
+      this.map.loadImage('https://s3-us-west-2.amazonaws.com/perspective360photos/PMarker.png',async (error, image)=> {
             if (error) throw error;
       this.map.removeLayer("tracker")
       this.map.removeSource("tracker")

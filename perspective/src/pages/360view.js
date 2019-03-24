@@ -3,11 +3,45 @@ import React, { Component } from 'react';
 import '../App.css';
 
 class View360 extends Component {
+  state = {
+    x:0,
+    y:0,
+    z:0
+  }
 
   componentDidMount(){
     document.getElementById('scene').addEventListener('loaded', function () {
         document.getElementById('loader').style = "display:none;"
      })
+     document.addEventListener('keydown', event=>this.handleKeyDown(event));
+  }
+
+  handleKeyDown(event){
+    let pressed
+    let rotation = {
+      x: this.state.x,
+      y: this.state.y,
+      z: this.state.z
+    }
+    switch(event.keyCode){
+      case 37 :
+        pressed = document.getElementById('leftArrow')
+        break;
+      case 38 :
+        pressed = document.getElementById('upArrow')
+        break;
+      case 39 :
+        pressed = document.getElementById('rightArrow')
+        break;
+      case 40 :
+        pressed = document.getElementById('downArrow')
+        break;
+      default:
+        return ""
+    }
+    pressed.className = "btn-floating green BTN360"
+    window.setTimeout(()=>pressed.className="btn-floating yellow darken-1 BTN360",200)
+    this.setState(rotation)
   }
 
   render() {
@@ -25,6 +59,7 @@ class View360 extends Component {
             <div id="loader" className="loading" style={{marginLeft: "345px",marginTop: "200px" }}>
             </div>
             <a-sky id="scene" src={this.props.view}></a-sky>
+            <a-entity rotation={`${this.state.x} ${this.state.y} ${this.state.z}`}></a-entity>
             </a-scene>
       </li>
      
@@ -32,11 +67,10 @@ class View360 extends Component {
     </div>
     <div class="container collection center-align valign-center">
         <div className="row">
-        <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_back</i></a>
-        <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_downward</i></a>
-        <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_upward</i></a>
-        <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_forward</i></a>
-        
+        <a id="leftArrow" class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_back</i></a>
+        <a id="downArrow" class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_downward</i></a>
+        <a id="upArrow" class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_upward</i></a>
+        <a id="rightArrow" class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_forward</i></a>
         </div>
         </div>
     </div>

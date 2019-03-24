@@ -22,10 +22,10 @@ class Upload extends Component {
     console.log(this.state)
   }
 
-
-  componentDidUpdate(){
-
+  componentDidMount(){
+    this.props.clearGPS()
   }
+
 
 
   async submitUpload(){
@@ -88,7 +88,8 @@ class Upload extends Component {
       </div>
       <div className="row">
         <div className="input-field col s12">
-          <input id="GPS" type="text" className="validate white-text" onChange={e=>this.updateField(e)}/>
+          <input id="GPS" type="text" className="validate white-text" onChange={e=>this.updateField(e)}></input>
+          {this.props.newGPS? `${this.props.newGPS[0]} , ${this.props.newGPS[1]}`: ""}
           <label for="GPS">Location / GPS Coordinates</label>
         </div>
       </div>

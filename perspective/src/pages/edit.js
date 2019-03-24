@@ -15,6 +15,7 @@ class Edit extends Component {
       viewTitle:this.props.viewTitle,
       GPS: this.props.GPS
     })
+  
   }
 
   updateField(event){

@@ -26,15 +26,19 @@ class View360 extends Component {
     switch(event.keyCode){
       case 37 :
         pressed = document.getElementById('leftArrow')
+        rotation.y -= 15
         break;
       case 38 :
         pressed = document.getElementById('upArrow')
+        rotation.x -= 15
         break;
       case 39 :
         pressed = document.getElementById('rightArrow')
+        rotation.y += 15
         break;
       case 40 :
         pressed = document.getElementById('downArrow')
+        rotation.x += 15
         break;
       default:
         return ""
@@ -54,13 +58,14 @@ class View360 extends Component {
     <ul className="collection center-align" >
         
       <li className="collection-item grey darken-4 ">
-        
-            <a-scene embedded >
-            <div id="loader" className="loading" style={{marginLeft: "345px",marginTop: "200px" }}>
-            </div>
-            <a-sky id="scene" src={this.props.view}></a-sky>
-            <a-entity rotation={`${this.state.x} ${this.state.y} ${this.state.z}`}></a-entity>
-            </a-scene>
+            
+              <a-scene embedded >
+              <div id="loader" className="loading" style={{marginLeft: "345px",marginTop: "200px" }}>
+              </div>
+              
+              <a-entity rotation={`${this.state.x} ${this.state.y} ${this.state.z}`}><a-sky id="scene" src={this.props.view}></a-sky></a-entity>
+              </a-scene>
+            
       </li>
      
     </ul>

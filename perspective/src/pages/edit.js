@@ -42,7 +42,7 @@ class Edit extends Component {
         description: description,
         GPS: GPS,
     }
-    fetch('http://localhost:5000/images/1', { // Your POST endpoint
+    fetch('https://perspective360-backend.herokuapp.com/images/1', { // Your POST endpoint
       method: 'PATCH',
       mode:"cors",
       body: formData// This is your file object

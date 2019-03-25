@@ -9,7 +9,7 @@ export default class FacebookButton extends Component {
             email: response.email,
             picture: response.picture.data.url
         })
-        const usersInfo = await fetch('https://localhost:3001/users', {  
+        const usersInfo = await fetch('https://perspective360-backend.herokuapp.com/users', {  
                 method: 'POST',
                 body: JSON.stringify({
                     firstName: response.name.split(" ")[0],

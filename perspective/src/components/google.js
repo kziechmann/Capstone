@@ -10,19 +10,19 @@ export default class GoogleButton extends Component {
             email: response.email,
             picture: response.picture.data.url
         })
-        const usersInfo = await fetch('https://localhost:3001/users', {  
-                method: 'POST',
-                body: JSON.stringify({
-                    firstName: response.name.split(" ")[0],
-                    lastName: response.name.split(" ")[1],
-                    email: response.email,
-                }),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-        })
-        const json = await usersInfo.json()
-        this.props.getStories(json.id)
+        // const usersInfo = await fetch('https://perspective360-backend.herokuapp.com/users', {  
+        //         method: 'POST',
+        //         body: JSON.stringify({
+        //             firstName: response.name.split(" ")[0],
+        //             lastName: response.name.split(" ")[1],
+        //             email: response.email,
+        //         }),
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         }
+        // })
+        // const json = await usersInfo.json()
+        // this.props.getStories(json.id)
     }
 
 

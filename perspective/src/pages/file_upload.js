@@ -40,7 +40,7 @@ class Upload extends Component {
     // let formData  = new FormData()
     // formData.append('image', image)
 
-    // const response = await fetch('http://localhost:5000/images/', { 
+    // const response = await fetch('https://perspective360-backend.herokuapp.com/images/', { 
     //   method: 'POST',
     //   mode:"cors",
     //   body: formData
@@ -56,7 +56,7 @@ class Upload extends Component {
     
 
     this.props.changePage("stories") 
-    // const users_images = await fetch('http://localhost:5000/users_images/1', { 
+    // const users_images = await fetch('https://perspective360-backend.herokuapp.com/users_images/1', { 
     //   method: 'POST',
     //   mode:"cors",
     //   body: formJSON

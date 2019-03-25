@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   async componentDidMount(){
-    const response = await fetch('http://localhost:5000/users/1')
+    const response = await fetch('https://perspective360-backend.herokuapp.com/users/1')
     const json = await response.json()
     const stories = json.map(story=> (
         {title: story.title,

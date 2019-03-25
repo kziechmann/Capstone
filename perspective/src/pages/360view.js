@@ -26,19 +26,27 @@ class View360 extends Component {
     switch(event.keyCode){
       case 37 :
         pressed = document.getElementById('leftArrow')
-        rotation.y -= 15
+        rotation.y === 0? rotation.y = 345 : rotation.y -= 15
         break;
       case 38 :
         pressed = document.getElementById('upArrow')
-        rotation.x -= 15
+        if(rotation.y === 180  || rotation.y === 360){
+          rotation.x === 360? rotation.x = 15 : rotation.x += 15
+        } else if(rotation.y === 90  || rotation.y === 270){
+          rotation.z === 360? rotation.z = 15 : rotation.z += 15
+        }
         break;
       case 39 :
         pressed = document.getElementById('rightArrow')
-        rotation.y += 15
+        rotation.y === 360? rotation.y = 15 : rotation.y += 15
         break;
       case 40 :
         pressed = document.getElementById('downArrow')
-        rotation.x += 15
+        if(rotation.y === 180  || rotation.y === 360){
+          rotation.x === 0? rotation.x = 345 : rotation.x -= 15
+        } else if(rotation.y === 90  || rotation.y === 270){
+          rotation.z === 0? rotation.z = 345 : rotation.z -= 15
+        }
         break;
       default:
         return ""
@@ -46,13 +54,14 @@ class View360 extends Component {
     pressed.className = "btn-floating green BTN360"
     window.setTimeout(()=>pressed.className="btn-floating yellow darken-1 BTN360",200)
     this.setState(rotation)
+    console.log(rotation)
   }
 
   render() {
     
 
     return (
-      <div className=" storyDash container" >
+      <div className="storyDash container" >
       
     <div className="row" style={{marginTop:"35px"}}>
     <ul className="collection center-align" >

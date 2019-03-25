@@ -6,6 +6,7 @@
     "font-awesome": "^4.7.0",
     "mapbox": "^1.0.0-beta10",
     "mapbox-gl": "^0.53.1",
+    "materialize-css": "^1.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-google-login": "^5.0.2",

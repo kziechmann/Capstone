@@ -83,14 +83,18 @@ class App extends Component {
       GPS: story.location,
       description: story.description
     })
-  }
-
-  clearGPS =()=>{
-    this.setState({GPS:[]})
+    
   }
 
   setNewGPS =(e)=>{
     this.setState({newGPS:[e.lngLat.lat,e.lngLat.lng]})
+  }
+
+  deleteStory = (toDelete)=>{
+    let stories = this.state.stories.filter(story=>{
+      return story.title !== toDelete
+    })
+    this.setState({stories: stories})
   }
 
   render() {
@@ -105,9 +109,9 @@ class App extends Component {
           {this.state.loggedIn ? <Nav attemptLogout={this.attemptLogout}  changePage={this.changePage} switchToView={this.switchToView} GPS={this.state.GPS.map(coord=>Number(coord))} user={this.state.user} loggedIn={this.state.loggedIn} setNewGPS={this.setNewGPS}/> : ""}
         </div>
         <div className="col m8">
-          {this.state.loggedIn && this.state.page === "stories"? <Stories stories={this.state.stories} changePage={this.changePage} setView={this.setView} viewTitle={this.state.viewTitle}/> : ""}
+          {this.state.loggedIn && this.state.page === "stories"? <Stories stories={this.state.stories} changePage={this.changePage} setView={this.setView} viewTitle={this.state.viewTitle} deleteStory={this.deleteStory}/> : ""}
           {this.state.loggedIn && this.state.page === "viewer"? <View360 stories={this.state.stories} view={this.state.viewURL}/> : ""}
-          {this.state.loggedIn && this.state.page === "upload"? <Upload changePage={this.changePage} clearGPS={this.clearGPS} newGPS={this.state.newGPS}/> : ""}
+          {this.state.loggedIn && this.state.page === "upload"? <Upload changePage={this.changePage} newGPS={this.state.newGPS}/> : ""}
           {this.state.loggedIn && this.state.page === "edit"? <Edit viewURL={this.state.viewURL} viewTitle={this.state.viewTitle} GPS={this.state.GPS} description={this.state.description} changePage={this.changePage}/> : ""}
         </div>
         <div className="col md2"></div>

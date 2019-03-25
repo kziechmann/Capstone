@@ -6,25 +6,29 @@ class Upload extends Component {
     viewURL: "",
     viewTitle: "",
     GPS: [],
-    description: ""
+    description: "",
+    gpsValid:true
   }
 
   updateField(event){
     let field = {[event.target.id]:event.target.value}
-    if(field.GPS) field.GPS = event.target.value.split(",")
-    if(field.viewURL){
-      const file = document.getElementById('viewURL').files[0]
-      this.setState({
-          viewUrl: URL.createObjectURL(file)
-      })
+    if(field.GPS) {
+      if(/^(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)$/.test(field.GPS.split(" ").join(""))){
+        this.setState({gpsValid: true})
+        field.GPS = event.target.value.split(",")
+      } else {
+        this.setState({gpsValid: false})
+      }
     }
+    // if(field.viewURL){
+    //   const file = document.getElementById('viewURL').files[0]
+    //   this.setState({
+    //       viewUrl: URL.createObjectURL(file)
+    //   })
+    // }
     this.setState(field)
-    console.log(this.state)
   }
 
-  componentDidMount(){
-    this.props.clearGPS()
-  }
 
 
 
@@ -40,7 +44,7 @@ class Upload extends Component {
       body: formData
     })
     const imageRes = await response.json()
-    console.log('response:  ',imageRes.imageUrl)
+    
     const formJSON = {
       title: document.getElementById('viewTitle').value,
       url: "https://s3-us-west-2.amazonaws.com/perspective360photos/1553201169492",
@@ -48,7 +52,7 @@ class Upload extends Component {
       GPS: document.getElementById('GPS').value,
     }
     
-    console.log('formJSON:  ',formJSON)
+
     this.props.changePage("stories") 
     const users_images = await fetch('http://localhost:5000/users_images/1', { 
       method: 'POST',
@@ -56,13 +60,13 @@ class Upload extends Component {
       body: formJSON
     })
     const userJson = await users_images.json()
-    console.log('users_images:  ',userJson)
+
     
   };
 
   render() {
     return (
-        <div className="fileUpload container collection">
+        <div className="fileUpload container collection" style={{width:'65vw', height:'80vh', marginTop:'10%'}}>
         <div className="row" style={{marginTop:"50px"}}>
             <div className="col s12 center-align">
             <span>
@@ -88,18 +92,18 @@ class Upload extends Component {
       </div>
       <div className="row">
         <div className="input-field col s12">
-          <input id="GPS" type="text" className="validate white-text" onChange={e=>this.updateField(e)}></input>
-          {this.props.newGPS? `${this.props.newGPS[0]} , ${this.props.newGPS[1]}`: ""}
+          <input id="GPS" type="text" className={this.state.GPS[0]? this.state.gpsValid? "valid white-text" : "invalid white-text" :"white-text"} onChange={e=>this.updateField(e)}></input>
+          <span className="grey-text">{this.props.newGPS? `${this.props.newGPS[0]} , ${this.props.newGPS[1]}`: ""} </span>
           <label for="GPS">Location / GPS Coordinates</label>
         </div>
       </div>
       <div className="file-field input-field">
                 <div className="btn green">
                     <span>File</span>
-                    <input id="viewURL" type="file" accept="image/jpg" onChange={e=>this.updateField(e)}></input>
+                    <input id="image" type="file" accept="image/jpg" onChange={e=>this.updateField(e)}></input>
                 </div>
                 <div className="file-path-wrapper" >
-                    <input  className="file-path validate white-text" type="text" onChange={e=>this.updateField(e)}></input>
+                    <input  className="file-path  white-text" type="text" onChange={e=>this.updateField(e)}></input>
                 </div>
             </div>
             <div className="row center-align active">

@@ -8,7 +8,7 @@ class Nav extends Component {
   render() {
     return (
       <React.Fragment>
-    <div className=" nav" >
+    <div className=" nav" style={{marginRight:'50px'}}>
     <div className="row">
     <ul className="collection center-align ">
       <li className="collection-item green darken-4 ">
@@ -19,23 +19,23 @@ class Nav extends Component {
       <FacebookButton attemptLogout={this.props.attemptLogout} user={this.props.user} loggedIn={this.props.loggedIn}/>
 
       <li className="collection-item grey darken-4">
-        <a className="waves-effect waves-light green btn"  href="/#" onClick={()=>this.props.changePage("stories")}><i className="material-icons left">map</i>My Stories</a>
+        <a className=" green btn"  href="/#" onClick={()=>this.props.changePage("stories")}><i className="material-icons left">map</i>My Stories</a>
      </li>
       <li className="collection-item grey darken-4">
-       <a className="waves-effect waves-light green btn" href="/#" style={{  paddingRight:'55px'}} onClick={()=>this.props.changePage("upload")}><i className="material-icons left">backup</i>Upload</a>
+       <a className=" green btn" href="/#" style={{  paddingRight:'55px'}} onClick={()=>this.props.changePage("upload")}><i className="material-icons left">backup</i>Upload</a>
       </li>
       <li className="collection-item grey darken-4">
-        <a className="waves-effect waves-light green btn" href="/#" onClick={()=>this.props.changePage("viewer")} style={{  paddingRight:'65px'}}><i className="material-icons left">explore</i>View</a>
+        <a className=" green btn" href="/#" onClick={()=>this.props.changePage("viewer")} style={{  paddingRight:'65px'}}><i className="material-icons left">explore</i>View</a>
       </li>
       <li className="collection-item grey darken-4">
-        <a className="waves-effect waves-light green btn"  href="/#"style={{  paddingRight:'65px'}} onClick={()=>this.props.changePage("edit")}><i className="material-icons left">create</i> Edit </a>
+        <a className=" green btn"  href="/#"style={{  paddingRight:'65px'}} onClick={()=>this.props.changePage("edit")}><i className="material-icons left">create</i> Edit </a>
       </li>
       
       
     </ul>
     </div>
-      <div className="collection mapBox grey darken-4" style={{marginTop:"-75px", marginLeft:"-5px"}}>
-      <MapBox GPS={this.props.GPS} setNewGPS={this.props.setNewGPS}/>
+      <div className="collection mapBox grey darken-4" style={{top: '50%', position:'fixed'}}>
+      <MapBox GPS={this.props.GPS} setNewGPS={this.props.setNewGPS} />
       </div>
     
       </div>

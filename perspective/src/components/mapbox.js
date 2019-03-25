@@ -92,11 +92,11 @@ class MapBox extends Component {
       };
     
     return (
-        <React.Fragment>
-        <div style={style} ref={el => this.mapContainer = el} />
-        <div className="center-align valign-center white-text" >
-        {this.props.GPS[0]? `(${this.props.GPS[0]} , ${this.props.GPS[1]})`: "(0,0)"}
-        </div> 
+        <React.Fragment >
+          <div style={style} ref={el => this.mapContainer = el} />
+          <div className="center-align valign-center white-text" >
+          {this.props.GPS[0]? `(${this.props.GPS[0]} , ${this.props.GPS[1]})`: "(0,0)"}
+          </div> 
         </React.Fragment>
     )
   }

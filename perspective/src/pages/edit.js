@@ -6,7 +6,8 @@ class Edit extends Component {
     viewURL: "",
     viewTitle: "",
     GPS: [],
-    description: ""
+    description: "",
+    gpsValid: true
   }
 
   componentDidMount(){
@@ -20,7 +21,14 @@ class Edit extends Component {
 
   updateField(event){
     let field = {[event.target.id]:event.target.value}
-    if(field.GPS) field.GPS = event.target.value.split(",")
+    if(field.GPS) {
+      if(/^(\-?\d+(\.\d+)?),\s*(\-?\d+(\.\d+)?)$/.test(field.GPS.split(" ").join(""))){
+        this.setState({gpsValid: true})
+        field.GPS = event.target.value.split(",")
+      } else {
+        this.setState({gpsValid: false})
+      }
+    }
     this.setState(field)
   }
 
@@ -51,7 +59,7 @@ class Edit extends Component {
 
   render() {
     return (
-    <div className="fileUpload container collection ">
+    <div className="fileUpload container collection " style={{width:'65vw', height:'80vh', marginTop:'10%'}}>
       <div className="row center-align" style={{marginTop:"75px"}}>
           <div className="col s12 ">
           <img alt="To Edit" className="preview" src={this.props.viewURL}  ></img>
@@ -61,21 +69,21 @@ class Edit extends Component {
       <div className="row center-align active">
           <div className="col s12 ">
           <span className="white-text" style={{marginLeft:"10%", marginRight:"10%"}}> Title </span>
-            <input id="viewTitle" type="text" className="validate white-text" placeholder={this.state.viewTitle} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
+            <input id="viewTitle" type="text" className=" white-text" placeholder={this.state.viewTitle} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
             <label htmlFor="viewTitle"></label>
           </div>
         </div>
         <div className="row center-align active">
           <div className="col s12 ">
           <span className="white-text"> Description </span>
-            <input id="description" type="text" className="validate white-text materialize-textarea " placeholder={this.state.description} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
+            <input id="description" type="text" className=" white-text materialize-textarea " placeholder={this.state.description} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
             <label htmlFor="description"></label>
           </div>
         </div>
         <div className="row center-align active">
           <div className="input-field col s12">
           <span className="white-text"> Location </span>
-            <input id="GPS" type="text" className="validate white-text" placeholder={this.state.GPS} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
+            <input id="GPS" type="text" className={this.state.GPS[0]? this.state.gpsValid? "valid white-text" : "invalid white-text" :"white-text"} placeholder={this.state.GPS} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
             <label htmlFor="GPS"></label>
           </div>
         </div>

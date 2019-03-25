@@ -17,6 +17,7 @@ class View360 extends Component {
   }
 
   handleKeyDown(event){
+    if(this.props.currentPage === "viewer"){
     let pressed
     let rotation = {
       x: this.state.x,
@@ -54,7 +55,7 @@ class View360 extends Component {
     pressed.className = "btn-floating green BTN360"
     window.setTimeout(()=>pressed.className="btn-floating yellow darken-1 BTN360",200)
     this.setState(rotation)
-    console.log(rotation)
+  }
   }
 
   render() {

@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import '../App.css';
 import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
@@ -7,6 +6,12 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoia3ppZWNobWFubiIsImEiOiJjanRhaGRlcXowYjBiNDVvO
 
 
 class MapBox extends Component {
+    state={
+    newGPS: [0,0]}
+
+    setNewGPS =(e)=>{
+      this.setState({newGPS:[e.lngLat.lat,e.lngLat.lng]})
+    }
 
     componentDidMount= async ()=>{
         this.map = await new mapboxgl.Map({
@@ -44,7 +49,7 @@ class MapBox extends Component {
             
             })
         this.map.on('click', (e) => {
-          this.props.setNewGPS(e)
+          this.setNewGPS(e)
           });
       }
 
@@ -92,12 +97,14 @@ class MapBox extends Component {
       };
     
     return (
-        <React.Fragment >
+        <div className="valign-center" >
           <div style={style} ref={el => this.mapContainer = el} />
-          <div className="center-align valign-center white-text" >
-          {this.props.GPS[0]? `(${this.props.GPS[0]} , ${this.props.GPS[1]})`: "(0,0)"}
-          </div> 
-        </React.Fragment>
+          <div className="center-align valign-center row " style={{marginTop:'15px', marginBottom:'-5px'}}>
+          <span className="white-text green" >
+          {this.state.newGPS[0]? `(\t ${this.state.newGPS[0].toFixed(3)} , \t ${this.state.newGPS[1].toFixed(3)}  )`: "(0.00,0.00)"}
+          </span> 
+          </div>
+        </div>
     )
   }
 }

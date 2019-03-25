@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ConfirmEdit from '../components/confirm_edit'
 import '../App.css';
 
 class Edit extends Component {
@@ -49,12 +50,12 @@ class Edit extends Component {
       response => response.json() // if the response is a JSON object
     ).then(
       success => {
-        alert("successfully uploaded image!" , success )
         return  this.props.changePage("stories")
       }// Handle the success response object
     ).catch(
       error => console.log(error) // Handle the error response object
     );
+
   }
 
   render() {
@@ -84,12 +85,11 @@ class Edit extends Component {
           <div className="input-field col s12">
           <span className="white-text"> Location </span>
             <input id="GPS" type="text" className={this.state.GPS[0]? this.state.gpsValid? "valid white-text" : "invalid white-text" :"white-text"} placeholder={this.state.GPS} onChange={e=>this.updateField(e)} style={{margin:"-30px"}}></input>
+            <span class="helper-text" data-error="Coordinates should be formatted: 150.00 , -150.00"></span> 
             <label htmlFor="GPS"></label>
           </div>
         </div>
-        <div className="row center-align active">
-        <a className="waves-effect waves-light green darken-2 btn " href="/#" onClick={()=>this.submitChanges()} style={{   marginRight:'20px'}}><i className="material-icons left">create</i>    Save Details </a>
-        </div>
+        <ConfirmEdit submitChanges={this.submitChanges} title={this.state.viewTitle}></ConfirmEdit>
       </form>
   </div>
     )

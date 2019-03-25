@@ -8,8 +8,8 @@ class Login extends Component {
     return (
       <React.Fragment>
       
-      <form className="container center-align valign">
-        <div className="card green row login-form" style={{height:"400px"}}>
+      <form className="container center-align valign" >
+        <div className="card green row login-form" style={{height:"400px",width:"400px", marginRight:'1500px', marginTop:'70px'}}>
           <div className="card-content white-text ">
            
               <img alt="logo" className="logo" src="https://s3-us-west-2.amazonaws.com/perspective360photos/P360_logo_1.png"></img>

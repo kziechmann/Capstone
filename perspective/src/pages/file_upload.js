@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ConfirmUpload from '../components/confirm_upload'
 import '../App.css';
 
 class Upload extends Component {
@@ -33,34 +34,35 @@ class Upload extends Component {
 
 
   async submitUpload(){
-    const imageInput = document.getElementById('viewURL')
-    const image = imageInput.files[0]
-    let formData  = new FormData()
-    formData.append('image', image)
-
-    const response = await fetch('http://localhost:5000/images/', { 
-      method: 'POST',
-      mode:"cors",
-      body: formData
-    })
-    const imageRes = await response.json()
     
-    const formJSON = {
-      title: document.getElementById('viewTitle').value,
-      url: "https://s3-us-west-2.amazonaws.com/perspective360photos/1553201169492",
-      description: document.getElementById('description').value,
-      GPS: document.getElementById('GPS').value,
-    }
+    // const imageInput = document.getElementById('viewURL')
+    // const image = imageInput.files[0]
+    // let formData  = new FormData()
+    // formData.append('image', image)
+
+    // const response = await fetch('http://localhost:5000/images/', { 
+    //   method: 'POST',
+    //   mode:"cors",
+    //   body: formData
+    // })
+    // const imageRes = await response.json()
+    
+    // const formJSON = {
+    //   title: document.getElementById('viewTitle').value,
+    //   url: "https://s3-us-west-2.amazonaws.com/perspective360photos/1553201169492",
+    //   description: document.getElementById('description').value,
+    //   GPS: document.getElementById('GPS').value,
+    // }
     
 
     this.props.changePage("stories") 
-    const users_images = await fetch('http://localhost:5000/users_images/1', { 
-      method: 'POST',
-      mode:"cors",
-      body: formJSON
-    })
-    const userJson = await users_images.json()
-
+    // const users_images = await fetch('http://localhost:5000/users_images/1', { 
+    //   method: 'POST',
+    //   mode:"cors",
+    //   body: formJSON
+    // })
+    // const userJson = await users_images.json()
+    
     
   };
 
@@ -95,6 +97,7 @@ class Upload extends Component {
           <input id="GPS" type="text" className={this.state.GPS[0]? this.state.gpsValid? "valid white-text" : "invalid white-text" :"white-text"} onChange={e=>this.updateField(e)}></input>
           <span className="grey-text">{this.props.newGPS? `${this.props.newGPS[0]} , ${this.props.newGPS[1]}`: ""} </span>
           <label for="GPS">Location / GPS Coordinates</label>
+          <span class="helper-text" data-error="Coordinates should be formatted: 150.00 , -150.00"></span>
         </div>
       </div>
       <div className="file-field input-field">
@@ -106,9 +109,7 @@ class Upload extends Component {
                     <input  className="file-path  white-text" type="text" onChange={e=>this.updateField(e)}></input>
                 </div>
             </div>
-            <div className="row center-align active">
-        <a className="waves-effect waves-light green darken-2 btn " href="/#" onClick={()=>this.submitUpload()} style={{   marginRight:'20px'}}><i className="material-icons left">create</i>  Upload Story </a>
-        </div>
+            <ConfirmUpload changePage={this.props.changePage} submitUpload={this.submitUpload} title={this.state.viewTitle}></ConfirmUpload>
     </form>
   </div>
         </div>

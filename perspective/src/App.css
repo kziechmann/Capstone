@@ -35,90 +35,20 @@ p{
 }
 
 a-scene {
-  height: 480px;
-  width: 720px;
+  height: 60vh;
+  width: 60vw;
   margin-left: auto;
   margin-right: auto;
   box-shadow: 0px 10px 25px 5px rgba(0,0,0,0.74);
 
 }
 
-.BTN360{
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: 20px;
-  margin-right: 20px;
+.avCircle{
+  margin-left:30px;
+  margin-top:10px;
+  box-shadow: 3px 2px 3px 1px rgba(0,0,0,0.5);
 }
 
-.story-header{
-  margin-top: -5px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.column-head{
-  margin-top: -1em;
-  margin-bottom: -2em;
-}
-
-.main-icon{
-  margin-top: 1em;
-  font-size: 1em;
-  margin-right: 5px;
-}
-
-.storyDash{
-  top: 5%;
-  bottom: 5%;
-  margin-left: 50px; 
-  color:black; 
-  position: fixed;
-  height:90vh;
-  width:65vw; 
-}
-
-.fileUpload{
-  top: 5%;
-  bottom: 5%;
-  margin-left: 50px;
-  padding-left: 50px;
-  padding-right: 50px;
-  padding-top: 50px;
-  color:black; 
-  position: fixed;
-  height:90vh;
-  width:65vw; 
-}
-
-.story{
-  background-color: rgba(0, 0, 0, 0);
-}
-
-.nav{
-  top: 5%;
-  left: 5%;
-  color:black;
-  position: fixed;
-  height: 90vh;
-  width:300px;
-
-}
-
-.mapBox{
-  background-color: slategrey;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  padding-right: 5px;
-  padding-left: 5px;
-  width:310px;
-  position: fixed;
-  top: 62%;
-}
-
-.thumb{
-  box-shadow: 10px 10px 25px 5px rgba(0,0,0,0.74);
-  margin-left: 20px;
-}
 
 .ava-box{
   margin-bottom: -12px;
@@ -136,14 +66,36 @@ a-scene {
     position: absolute;
     z-index: -1;   
 }
-
-.login-form{
-  display: inline-block;
-  position: absolute;
-  top: 12%;
-  left: 5%;
-  height: 20vh;
+.BTN360{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
+
+.column-head{
+  margin-top: -1em;
+  margin-bottom: -2em;
+}
+
+.fileUpload{
+  top: 5%;
+  bottom: 5%;
+  margin-left: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 50px;
+  color:black; 
+  height:90vh;
+  width:65vw; 
+}
+
+.main-icon{
+  margin-top: 1em;
+  font-size: 1em;
+  margin-right: 5px;
+}
+
 
 .loading {
   position: absolute;
@@ -154,15 +106,101 @@ a-scene {
   z-index: 2;   
 }
 
+.logo{
+  display: block;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 18px;
+}
+
+
+.mapBox{
+  background-color: slategrey;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 5px;
+  padding-left: 5px;
+  width:310px;
+  position: fixed;
+  top: 62%;
+}
+
+
+.nav{
+  top: 6%;
+  left: 5%;
+  color:black;
+  position: fixed;
+  height: 90vh;
+  width:300px;
+}
+
+.preview{
+  width:500px;
+  height:300px;
+  margin-top:-30px;
+  box-shadow: 0px 10px 25px 5px rgba(0,0,0,0.74);
+}
+
+.story{
+  background-color: rgba(0, 0, 0, 0);
+  margin-top: 28px;
+}
+
+.storyDash{
+  top: 5%;
+  bottom: 5%;
+  margin-left: 50px; 
+  color:black; 
+  position: fixed;
+  height:90vh;
+  width:65vw; 
+}
+
+
+.story-header{
+  margin-top: -5px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.thumb{
+  box-shadow: 10px 10px 25px 5px rgba(0,0,0,0.74);
+  margin-left: 20px;
+}
+
+.valid{
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+
+.invalid{
+  border-bottom: 1px solid #000;
+  box-shadow: 0 1px 0 0 #000;
+}
+
 @media only screen and (min-width: 600px){
   .login-form{
     display: inline-block;
     position: absolute;
-    top: 12%;
+    top: 15%;
     left: 36%;
     bottom: 50%;
     right: 33%;
-    height: 80vh;
+  }
+}
+
+@media only screen and (max-width: 600px){
+  .login-form{
+    display: inline-block;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    bottom: 20%;
+    right: 33%;
+    width: 80%;
+    height: 66%;
   }
 }
 

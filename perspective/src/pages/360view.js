@@ -3,57 +3,89 @@ import React, { Component } from 'react';
 import '../App.css';
 
 class View360 extends Component {
-  state={
-      stories: [
-        {   title: "SKIING RED MOUNTAIN",
-            description: "From the top of Denali looking acrosss the Alaska range in all of its glory.",
-            location:  "63.0865043,-150.6297594",
-            url:"https://perspectiveapp360photos.s3.amazonaws.com/PANO_20180128_142447.jpg?AWSAccessKeyId=AKIAI2MLWHVQZ25KOA4A&Expires=1552688837&Signature=1qhQizi1whxm6So8d55bBldY8%2Bw%3D"},
-        {   title: "FIRST FLATIRON SUMMIT",
-            description: "From the top of Denali looking acrosss the Alaska range in all of its glory.",
-            location:  "63.0865043,-150.6297594",
-            url: "https://perspectiveapp360photos.s3.amazonaws.com/PANO_20180308_170130.jpg?AWSAccessKeyId=AKIAI2MLWHVQZ25KOA4A&Expires=1552688837&Signature=G02cd6fQ3UpnfIh6kDWjduEXJSY%3D"},
-        {   title: "CANYONLANDS MOAB",
-            description: "From the top of Denali looking acrosss the Alaska range in all of its glory.",
-            location:  "63.0865043,-150.6297594",
-            url:"https://perspectiveapp360photos.s3.amazonaws.com/PANO_20181019_014544.jpg?AWSAccessKeyId=AKIAI2MLWHVQZ25KOA4A&Expires=1552688837&Signature=812%2BZ1F0xbGcB09Tv%2FpS%2FsHGXjo%3D"}
-
-    ]
+  state = {
+    x:0,
+    y:0,
+    z:0
   }
 
   componentDidMount(){
     document.getElementById('scene').addEventListener('loaded', function () {
         document.getElementById('loader').style = "display:none;"
      })
+     document.addEventListener('keydown', event=>this.handleKeyDown(event));
+  }
+
+  handleKeyDown(event){
+    if(this.props.currentPage === "viewer"){
+    let pressed
+    let rotation = {
+      x: this.state.x,
+      y: this.state.y,
+      z: this.state.z
+    }
+    switch(event.keyCode){
+      case 37 :
+        pressed = document.getElementById('leftArrow')
+        rotation.y === 0? rotation.y = 345 : rotation.y -= 15
+        break;
+      case 38 :
+        pressed = document.getElementById('upArrow')
+        if(rotation.y === 180  || rotation.y === 360){
+          rotation.x === 360? rotation.x = 15 : rotation.x += 15
+        } else if(rotation.y === 90  || rotation.y === 270){
+          rotation.z === 360? rotation.z = 15 : rotation.z += 15
+        }
+        break;
+      case 39 :
+        pressed = document.getElementById('rightArrow')
+        rotation.y === 360? rotation.y = 15 : rotation.y += 15
+        break;
+      case 40 :
+        pressed = document.getElementById('downArrow')
+        if(rotation.y === 180  || rotation.y === 360){
+          rotation.x === 0? rotation.x = 345 : rotation.x -= 15
+        } else if(rotation.y === 90  || rotation.y === 270){
+          rotation.z === 0? rotation.z = 345 : rotation.z -= 15
+        }
+        break;
+      default:
+        return ""
+    }
+    pressed.className = "btn-floating green BTN360"
+    window.setTimeout(()=>pressed.className="btn-floating yellow darken-1 BTN360",200)
+    this.setState(rotation)
+  }
   }
 
   render() {
     
 
     return (
-      <div className=" storyDash container" >
+      <div className="storyDash container" >
       
-    <div className="row">
-    <ul className="collection center-align">
+    <div className="row" style={{marginTop:"35px"}}>
+    <ul className="collection center-align" >
         
       <li className="collection-item grey darken-4 ">
-        
-            <a-scene embedded >
-            <div id="loader" className="loading" style={{marginLeft: "345px",marginTop: "200px" }}>
-            </div>
-            <a-sky id="scene" src={this.props.view}></a-sky>
-            </a-scene>
+            
+              <a-scene embedded >
+              <div id="loader" className="loading" style={{marginLeft: "345px",marginTop: "200px" }}>
+              </div>
+              
+              <a-entity rotation={`${this.state.x} ${this.state.y} ${this.state.z}`}><a-sky id="scene" src={this.props.view}></a-sky></a-entity>
+              </a-scene>
+            
       </li>
      
     </ul>
     </div>
     <div class="container collection center-align valign-center">
         <div className="row">
-        <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_back</i></a>
-        <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_downward</i></a>
-        <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_upward</i></a>
-        <a class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_forward</i></a>
-
+        <a id="leftArrow" class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_back</i></a>
+        <a id="downArrow" class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_downward</i></a>
+        <a id="upArrow" class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_upward</i></a>
+        <a id="rightArrow" class="btn-floating yellow darken-1 BTN360"><i class="material-icons">arrow_forward</i></a>
         </div>
         </div>
     </div>
